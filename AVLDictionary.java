@@ -172,12 +172,50 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	
 	private void rotateLeft (AVLNode x) {
 	
+		AVLNode p	= x.parent();
+		AVLNode y	= x.right();
+		AVLNode t1	= x.left();
+		AVLNode t2	= y.left();
+		AVLNode t3	= y.right();
+
+		boolean xWasLeftChild	= x.key().compareTo(p.key()) == -1;
+
+		// The following code is unoptimized and shouldn't work due to the lack of setter methods, but might anyway due to privacy leaks
+		x.left()	= t1;
+		x.right()	= t2;
+		y.left()	= x;
+		y.right		= t3;
+		if (xWasLeftChild) {
+			p.left()	= y;
+		} else {
+			p.right()	= y;
+		}
+	
 	}
 	
 	// Implements a right rotation at an input node; to be supplied
 	// by students
 	
 	private void rotateRight (AVLNode x) {
+	
+		AVLNode p	= x.parent();
+		AVLNode y	= x.left();
+		AVLNode t1	= y.left();
+		AVLNode t2	= y.right();
+		AVLNode t3	= x.right();
+
+		boolean xWasLeftChild	= x.key().compareTo(p.key()) == -1;
+
+		// The following code is unoptimized and shouldn't work due to the lack of setter methods, but might anyway due to privacy leaks
+		x.left()	= t2;
+		x.right()	= t3;
+		y.left()	= t1;
+		y.right		= t3;
+		if (xWasLeftChild) {
+			p.left()	= y;
+		} else {
+			p.right()	= y;
+		}
 	
 	}
 	
