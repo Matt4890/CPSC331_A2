@@ -172,23 +172,33 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	
 	private void rotateLeft (AVLNode x) {
 	
-		AVLNode p	= x.parent();
+		// Aliases
 		AVLNode y	= x.right();
 		AVLNode t1	= x.left();
 		AVLNode t2	= y.left();
 		AVLNode t3	= y.right();
 
-		boolean xWasLeftChild	= x.key().compareTo(p.key()) == -1;
-
-		// The following code is unoptimized and shouldn't work due to the lack of setter methods, but might anyway due to privacy leaks
+		// Handling Children
 		x.left	= t1;
 		x.right	= t2;
 		y.left	= x;
 		y.right	= t3;
-		if (xWasLeftChild) {
-			p.left	= y;
+
+		// Handling The Parent
+		if (x == root) {
+
+			root = y;
+
 		} else {
-			p.right	= y;
+		
+			AVLNode p = x.parent();
+
+			if (x.key().compareTo(p.key()) == -1) { // If x was a left child
+				p.left	= y;
+			} else {
+				p.right	= y;
+			}
+
 		}
 	
 	}
@@ -198,23 +208,33 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	
 	private void rotateRight (AVLNode x) {
 	
-		AVLNode p	= x.parent();
+		// Aliases
 		AVLNode y	= x.left();
 		AVLNode t1	= y.left();
 		AVLNode t2	= y.right();
 		AVLNode t3	= x.right();
 
-		boolean xWasLeftChild	= x.key().compareTo(p.key()) == -1;
-
-		// The following code is unoptimized and shouldn't work due to the lack of setter methods, but might anyway due to privacy leaks
+		// Handling Children
 		x.left	= t2;
 		x.right	= t3;
 		y.left	= t1;
-		y.right	= t3;
-		if (xWasLeftChild) {
-			p.left	= y;
+		y.right	= x;
+
+		// Handling The Parent
+		if (x == root) {
+
+			root = y;
+
 		} else {
-			p.right	= y;
+		
+			AVLNode p = x.parent();
+
+			if (x.key().compareTo(p.key()) == -1) { // If x was a left child
+				p.left	= y;
+			} else {
+				p.right	= y;
+			}
+
 		}
 	
 	}
