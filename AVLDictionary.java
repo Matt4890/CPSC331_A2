@@ -181,14 +181,14 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		boolean xWasLeftChild	= x.key().compareTo(p.key()) == -1;
 
 		// The following code is unoptimized and shouldn't work due to the lack of setter methods, but might anyway due to privacy leaks
-		x.left()	= t1;
-		x.right()	= t2;
-		y.left()	= x;
-		y.right		= t3;
+		x.left	= t1;
+		x.right	= t2;
+		y.left	= x;
+		y.right	= t3;
 		if (xWasLeftChild) {
-			p.left()	= y;
+			p.left	= y;
 		} else {
-			p.right()	= y;
+			p.right	= y;
 		}
 	
 	}
@@ -207,14 +207,14 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		boolean xWasLeftChild	= x.key().compareTo(p.key()) == -1;
 
 		// The following code is unoptimized and shouldn't work due to the lack of setter methods, but might anyway due to privacy leaks
-		x.left()	= t2;
-		x.right()	= t3;
-		y.left()	= t1;
-		y.right		= t3;
+		x.left	= t2;
+		x.right	= t3;
+		y.left	= t1;
+		y.right	= t3;
 		if (xWasLeftChild) {
-			p.left()	= y;
+			p.left	= y;
 		} else {
-			p.right()	= y;
+			p.right	= y;
 		}
 	
 	}
