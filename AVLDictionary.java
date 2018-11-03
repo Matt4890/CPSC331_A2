@@ -151,17 +151,17 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 			throw new NoSuchElementException();
 		
-		} else if (x.key().compareTo(key) == 0) {
-
-			return x.value();
-
 		} else if (x.key().compareTo(key) == -1) {
 
 			return search(key, x.left());
 
-		} else { // x.key().compareTo(key) == 1
+		} else if (x.key().compareTo(key) == 1) {
 
 			return search(key, x.right());
+
+		} else { // x.key().compareTo(key) == 0
+
+			return x.value();
 
 		}
 	
@@ -259,6 +259,28 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	// by students
 	
 	private void change (K k, V v, AVLNode x) {
+
+		if (x.key().compareTo(k) == -1) {
+
+			if (x.left() == null){
+				x.left = new AVLNode(k, v);
+			} else {
+				change(k, v, x.left());
+			}
+
+		} else if (x.key().compareTo(k) == 1) {
+
+			if (x.right() == null){
+				x.right = new AVLNode(k, v);
+			} else {
+				change(k, v, x.right());
+			}
+
+		} else { // x.key().compareTo(key) == 0
+
+			x.value	= v;
+
+		}
 	
 	}
 	
