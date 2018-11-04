@@ -1,0 +1,90 @@
+\documentclass[a4paper, 12pt, titlepage]{article}
+
+\def\code#1{\texttt{#1}}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+  frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+% Basic document details
+\title{CPSC 331: Assignment 2}
+\author{
+  Matthew Allwright\\
+  \texttt{30037812}
+  \and
+  Karim Beyk\\
+  \texttt{30027342}
+  \and
+  Seth Campbell\\
+  \texttt{10152719}
+}
+
+\begin{document}
+
+\maketitle
+
+\section*{AVL Tree Defenition and Properties}
+
+\subsection*{Question 1: Prove that $s_i \geq F_{i+1}+F_{i+2}-1$.}
+
+\section*{Insertions}
+
+\subsection*{Question 2: Briefly explain why the only nodes in a tree whose heights or balance factors might
+have changed lie on the path from the a leaf up to the root of the tree.} 
+
+\subsection*{Question 3: Briefly explain why the balance factors of the nodes on the above path are all either $2$, $1$, $0$, $-1$, or $-2$.} 
+
+\subsection*{Question 4: Explain why if $v$ is some node on this path in the tree, and the height of $v$ has not been changed, then the heights and balanced factors of all the nodes on the path that are above $v$ have not been changed either.} 
+
+\subsection*{Question 5: Comparing Figures 5 and 6, confirm that node $\alpha$ has height h and balance factor $0$ after the described rotation.} 
+
+\subsection*{Question 6: Confirm that the node $\beta$ has height $h+1$ and balance factor $0$ as well after the described rotation.} 
+
+\subsection*{Question 7: Explain why the binary search tree is once again an AVL tree after the described rotation.} 
+
+\subsection*{Question 8: Confirm that $\alpha$ and $\beta$ each have a balance factor within $\{−1, 0, 1\}$ and height $h$ after this adjustment.} 
+
+\subsection*{Question 9: Explain why $\gamma$ has height $h+1$ and balance factor $0$ after this operation. Using this, explain why the resulting tree is an AVL tree after this operation.} 
+
+\subsection*{Question 10: Consider the case that $\alpha$ has balance factor $-2$, so that the subtree with root $\alpha$ is as shown in Figure 10. Describe two more cases that should probably be called the \textit{right-right} case and the \textit{right-left} case that might arise, corresponding this one, and describe the adjustments that can be used to produce AVL trees when these cases arise.} 
+
+\section*{Deletions}
+
+\subsection*{Question 11: Suppose that you perform a right rotation at $\alpha$ so that the subtree with root $\beta$ after this adjustment is as shown in Figure 6. Briefly explain why $\alpha$ has height $h+1$ and balance factor $1$ after this adjustment.} 
+
+\subsection*{Question 12: Briefly explain why $\beta$ has height $h+2$ and balance factor $-1$ after this adjustment.} 
+
+\subsection*{Question 13: Briefly explain why the entire binary search tree is an AVL tree after this adjustment.} 
+
+\subsection*{Question 14: Now consider the case that $\alpha$ has balance factor $-2$, instead, so that the subtree with root $\alpha$ is as shown in Figure 10. Briefly describe another three cases corresponding to this, along with the adjustments that should be made for each.} 
+
+\section*{Implementing an AVL Tree}
+
+\subsection*{Question 15: Briefly describe the structure of an algorithm for an insertion into an AVL tree.} 
+
+\subsection*{Question 16: Briefly describe the structure of an algorithm for a deletion from an AVL tree.} 
+
+\subsection*{Question 17: Provide a complete \code{AVLDictionary.java} class for assessment.} 
+
+\end{document}
