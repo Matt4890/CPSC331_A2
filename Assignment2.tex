@@ -4,6 +4,7 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{amsmath}
+\usepackage{indentfirst}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -48,18 +49,56 @@
 
 \subsection*{Question 1: Prove that $s_i \geq F_{i+1}+F_{i+2}-1$.}
 
+Induction and fun mathematics.
+
 \section*{Insertions}
 
 \subsection*{Question 2: Briefly explain why the only nodes in a tree whose heights or balance factors might
 have changed lie on the path from the a leaf up to the root of the tree.} 
 
+Both the height and the balance factor of a node are exclusively determined by the connected nodes of a greater depth.
+
 \subsection*{Question 3: Briefly explain why the balance factors of the nodes on the above path are all either $2$, $1$, $0$, $-1$, or $-2$.} 
+
+Assuming the tree was indeed an AVL tree before the insertion, 
+then all nodes of the tree must have a balance factor within $\{1, 0, -1\}$. 
+By inserting a node, 
+the balance factor of any preceeding node will be modified by a value of either $1$ or $-1$, 
+as only one node was inserted. 
+Thus, 
+the extreme values of the set of possible balance factors may become more ``extreme'' by an absolute value of 1, 
+meaning $-1$ may become $-2$ and $1$ may become $2$.
+Plus the other values are still attainable.
 
 \subsection*{Question 4: Explain why if $v$ is some node on this path in the tree, and the height of $v$ has not been changed, then the heights and balanced factors of all the nodes on the path that are above $v$ have not been changed either.} 
 
+Height: 
+The height of a node depends on the maximum height of its children. 
+If neither of the node's children's heights have changed, 
+then the node's own height cannot have changed.
+
+Balance Factor: 
+The balance factor of a node is defined as the height of the left child minus the height of the right child. 
+If neither of the node's children's balance factors have changed, 
+then the node's own balance factor cannot have changed.
+
 \subsection*{Question 5: Comparing Figures 5 and 6, confirm that node $\alpha$ has height h and balance factor $0$ after the described rotation.} 
 
+After the rotation, 
+node $\alpha$ has $T_2$ as its left child, 
+and $T_3$ as its right child. 
+No nodes within $T_2$ or $T_3$ have been changed, 
+and thus they each maintain the height of $h-1$, 
+as they did before the rotation. 
+Because each child of $\alpha$ has the same height, 
+the balance factor of $\alpha$ is $0$. 
+Also, 
+the maximum height of either child of $\alpha$ is $h-1$, 
+meaning that the height of $\alpha$ is indeed $h$.
+
 \subsection*{Question 6: Confirm that the node $\beta$ has height $h+1$ and balance factor $0$ as well after the described rotation.} 
+
+Something something copy question 5.
 
 \subsection*{Question 7: Explain why the binary search tree is once again an AVL tree after the described rotation.} 
 
