@@ -114,10 +114,10 @@ the binary search tree is an AVL tree once again.
 
 \subsection*{Question 8: Confirm that $\alpha$ and $\beta$ each have a balance factor within $\{−1, 0, 1\}$ and height $h$ after this adjustment.} 
 
-After the rotation,
+After the rotations,
 $T_1$ and $T_3$ maintain height $h-1$,
 and both $T_{2a}$ and $T_{2b}$ maintain height of either $h-1$ or $h-2$
-(at least one of them must be $h-1$ because $\gamma$ had height $h$ before the rotation).
+(at least one of them must be $h-1$ because $\gamma$ had height $h$ before the rotations).
 Because of this,
 both nodes $\alpha$ and $\beta$ will have height $h$.
 Also,
@@ -131,8 +131,8 @@ Only one of these nodes can have a balance factor that is not $0$.
 
 Since both children of $\gamma$,
 nodes $\alpha$ and $\beta$,
-have height $h$ after the rotation,
-node $\gamma$ must have height $h+1$ after the rotation.
+have height $h$ after the rotations,
+node $\gamma$ must have height $h+1$ after the rotations.
 Seeing as $\alpha$ and $\beta$ also have the same height as each other,
 node $\gamma$ has a balance factor of $0$.
 
@@ -155,7 +155,9 @@ Because of this,
 much like the \textit{left-left} and \textit{left-right} cases,
 node $\alpha$ must have height of $h+2$ for some integer $h\geq{}0$.
 Using this,
-we can state that the left child of $\alpha$ has height $h-1$,
+we can state that the left child of $\alpha$
+($T_1$)
+has height $h-1$,
 and the right child of $\alpha$ has height $h+1$.
 We will define the right child of $\alpha$ to be $\beta$,
 and define the left child of $\alpha$ to be $T_1$.
@@ -177,7 +179,7 @@ the left and right children of $\beta$
 (defined as $T_2$ and $T_3$)
 must have heights $h-1$ and $h$ respectively.
 
-This is solved with a left rotation at $\beta$.
+This is solved with a left rotation at $\alpha$.
 $T_1$ will remain the left child of $\alpha$,
 with $T_2$ becoming the right child.
 Node $\alpha$ then becomes the left child of $\beta$,
@@ -185,12 +187,44 @@ with $T_3$ remaining the right child.
 
 Because both $T_1$ and $T_2$ had height $h-1$,
 node $\alpha$ now has height $h$ and a balance factor of $0$.
+And since both children of $\beta$,
+$T_3$ and $\alpha$,
+have height $h$,
+node $\beta$ now has height $h+1$ and a balance factor of $0$.
 
+Thus this problem node has been fixed.
 
 \noindent
 \textbf{Right-Left Case:}
 
-Butts.
+In this case,
+node $\beta$ will have a balance factor of $1$ after the insertion.
+Since $\beta$ has a height of $h+1$,
+the left and right children of $\beta$
+(defined as $\gamma$ and $T_3$)
+must have heights $h$ and $h-1$ respectively.
+We will defined the left child of $\gamma$ as $T_{2a}$,
+and the right as $T_{2b}$.
+In accordance of the height $h$ of $\gamma$,
+at least one of these children must have height $h-1$,
+while the other can have either $h-1$ or $h-2$.
+
+This is solved with a right rotation at $\beta$,
+followed by a left rotation at $\alpha$.
+% Draw this out and then do this section.
+$T_1$ will remain the left child of $\alpha$,
+with $T_2$ becoming the right child.
+Node $\alpha$ then becomes the left child of $\beta$,
+with $T_3$ remaining the right child.
+
+Because both $T_1$ and $T_2$ had height $h-1$,
+node $\alpha$ now has height $h$ and a balance factor of $0$.
+And since both children of $\beta$,
+$T_3$ and $\alpha$,
+have height $h$,
+node $\beta$ now has height $h+1$ and a balance factor of $0$.
+
+Thus this problem node has been fixed.
 
 \section*{Deletions}
 
