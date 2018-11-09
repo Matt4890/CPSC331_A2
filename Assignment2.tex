@@ -213,22 +213,29 @@ This is solved with a right rotation at $\beta$,
 followed by a left rotation at $\alpha$.
 % Draw this out and then do this section.
 $T_1$ will remain the left child of $\alpha$,
-with $T_2$ becoming the right child.
-Node $\alpha$ then becomes the left child of $\beta$,
-with $T_3$ remaining the right child.
+with $T_{2a}$ becoming the right child.
+$T_3$ will remain the right child of $\beta$,
+with $T_{2b}$ becoming the left child.
+Nodes $\alpha$ and $\beta$ then become the left and right children of $\gamma$ respectively.
 
-Because both $T_1$ and $T_2$ had height $h-1$,
-node $\alpha$ now has height $h$ and a balance factor of $0$.
-And since both children of $\beta$,
-$T_3$ and $\alpha$,
-have height $h$,
-node $\beta$ now has height $h+1$ and a balance factor of $0$.
+Because node $\gamma$ had height $h$ before the rotations,
+at least of one $T_{2a}$ and $T_{2b}$ must have height $h-1$.
+Also, since $\alpha$ was defined as the \textit{lowest} node with a balance factor outside of $\{-1,0,1\}$,
+the remaining child of $\gamma$ must either have height $h-1$ as well,
+or height $h-2$ in order to keep $\gamma$'s balance factor within the acceptable range.
+Using this,
+we can determine that node $\alpha$ will have height $h$ and a balance factor of either $0$ or $1$,
+and node $\beta$ will also have height $h$ and a balance factor of either $-1$ or $0$ after the rotations.
+Examining further,
+we can also determine that node $\gamma$ will have height $h+1$ and a balance factor of $0$ after the rotations.
 
 Thus this problem node has been fixed.
 
 \section*{Deletions}
 
 \subsection*{Question 11: Suppose that you perform a right rotation at $\alpha$ so that the subtree with root $\beta$ after this adjustment is as shown in Figure 6. Briefly explain why $\alpha$ has height $h+1$ and balance factor $1$ after this adjustment.} 
+
+
 
 \subsection*{Question 12: Briefly explain why $\beta$ has height $h+2$ and balance factor $-1$ after this adjustment.} 
 

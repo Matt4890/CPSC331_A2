@@ -322,4 +322,29 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 	}
 
+
+	private void balanceNode(AVLNode x) {
+
+		if (x.balanceFactor() == 2) {
+
+			if (x.left().balanceFactor() == 1) {		// Left-Left Case
+				rotateRight(x);
+			} else { // x.left().balanceFactor() == -1	// Left-Right Case
+				rotateLeft(x.left());
+				rotateRight(x);
+			}
+
+		} else if (x.balanceFactor() == -2) {
+
+			if (x.right().balanceFactor() == 1) {		// Right-Left Case
+				rotateRight(x.right());
+				rotateLeft(x);
+			} else { // x.right().balanceFactor() == -1	// Right-Right Case
+				rotateLeft(x);
+			}
+
+		}
+
+	}
+
 }
