@@ -108,6 +108,14 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 		}
 
+		void updateHeight() {
+
+			int leftHeight	= this.left == null ? -1 : this.left.height();
+			int rightHeight	= this.right == null ? -1 : this.right.height();
+			this.height		= leftHeight >= rightHeight ? leftHeight + 1 : rightHeight + 1;
+
+		}
+
 	}
 
 	// Data Fields
@@ -264,10 +272,14 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 	private void change (K k, V v, AVLNode x) {
 
+		AVLNode y = null;
+
 		if (x.key().compareTo(k) == -1) {
 
 			if (x.left() == null){
-				x.left = new AVLNode(k, v);
+				y			= new AVLNode(k, v);
+				x.left		= y;
+				y.parent	= x;
 			} else {
 				change(k, v, x.left());
 			}
@@ -275,7 +287,9 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		} else if (x.key().compareTo(k) == 1) {
 
 			if (x.right() == null){
-				x.right = new AVLNode(k, v);
+				y			= new AVLNode(k, v);
+				x.right		= y;
+				y.parent	= x;
 			} else {
 				change(k, v, x.right());
 			}
@@ -283,6 +297,18 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		} else { // x.key().compareTo(key) == 0
 
 			x.value	= v;
+
+		}
+
+		if (y != null) {
+
+			while (y != root) {
+				y.updateHeight();
+				if (y.balanceFactor() == 2 || y.balanceFactor() == -2) {
+					balanceNode(y);
+				}
+				y = y.parent();
+			}
 
 		}
 
@@ -321,7 +347,6 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		return null;      // This line must be replaced.
 
 	}
-
 
 	private void balanceNode(AVLNode x) {
 
