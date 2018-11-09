@@ -102,11 +102,95 @@ Something something copy question 5.
 
 \subsection*{Question 7: Explain why the binary search tree is once again an AVL tree after the described rotation.} 
 
+\ldots but $\alpha$ had height $h+2$ before the rotation,
+not $h+1$\ldots
+
+\textit{Assuming $\alpha$ was the \textbf{only} problem node in the tree\ldots}
+
+Since node $\alpha$ now has a balance factor of $0$,
+node $\beta$ also has a balance factor of $0$,
+and no nodes above or below nodes $\alpha$ and $\beta$ have been modified,
+the binary search tree is an AVL tree once again.
+
 \subsection*{Question 8: Confirm that $\alpha$ and $\beta$ each have a balance factor within $\{−1, 0, 1\}$ and height $h$ after this adjustment.} 
+
+After the rotation,
+$T_1$ and $T_3$ maintain height $h-1$,
+and both $T_{2a}$ and $T_{2b}$ maintain height of either $h-1$ or $h-2$
+(at least one of them must be $h-1$ because $\gamma$ had height $h$ before the rotation).
+Because of this,
+both nodes $\alpha$ and $\beta$ will have height $h$.
+Also,
+because there is a chance for either $T_{2a}$ or $T_{2b}$ to have height $h-2$
+(but not both),
+node $\beta$ will have a balance factor of either $0$ or $1$,
+and node $\alpha$ will have a balance factor of either $0$ or $-1$.
+Only one of these nodes can have a balance factor that is not $0$.
 
 \subsection*{Question 9: Explain why $\gamma$ has height $h+1$ and balance factor $0$ after this operation. Using this, explain why the resulting tree is an AVL tree after this operation.} 
 
+Since both children of $\gamma$,
+nodes $\alpha$ and $\beta$,
+have height $h$ after the rotation,
+node $\gamma$ must have height $h+1$ after the rotation.
+Seeing as $\alpha$ and $\beta$ also have the same height as each other,
+node $\gamma$ has a balance factor of $0$.
+
+\textit{Assuming $\alpha$ was the \textbf{only} problem node in the tree\ldots}
+
+Since node $\alpha$ now has a balance factor within $\{−1, 0, 1\}$,
+node $\beta$ also has a balance factor within $\{−1, 0, 1\}$,
+node $\gamma$ also a balance factor of $0$,
+and no nodes above or below nodes $\alpha$, $\beta$, and $\gamma$ have been modified,
+the binary search tree is an AVL tree once again.
+
 \subsection*{Question 10: Consider the case that $\alpha$ has balance factor $-2$, so that the subtree with root $\alpha$ is as shown in Figure 10. Describe two more cases that should probably be called the \textit{right-right} case and the \textit{right-left} case that might arise, corresponding this one, and describe the adjustments that can be used to produce AVL trees when these cases arise.} 
+
+Both of these cases are mirrors of the previous two,
+and can be solved in a similar way.
+
+Seeing as node $\alpha$ has a balance factor of $-2$,
+there must be 2 more descendants on the right of $\alpha$ than there are on the left.
+Because of this,
+much like the \textit{left-left} and \textit{left-right} cases,
+node $\alpha$ must have height of $h+2$ for some integer $h\geq{}0$.
+Using this,
+we can state that the left child of $\alpha$ has height $h-1$,
+and the right child of $\alpha$ has height $h+1$.
+We will define the right child of $\alpha$ to be $\beta$,
+and define the left child of $\alpha$ to be $T_1$.
+Because $\alpha$ is the \textit{deepest} node with a balance factor of either $-2$ or $2$,
+both children of node $\beta$ must have had height $h-1$ before the insertion.
+If this was not true,
+then either $\beta$ would have become the deepest node with a balance factor of either $-2$ or $2$,
+or $\beta$ would not have had height $h$ before the insertion.
+
+\textbf{DO WE KEEP THAT LAST SENTENCE?}
+
+\noindent
+\textbf{Right-Right Case:}
+
+In this case,
+node $\beta$ will have a balance factor of $-1$ after the insertion.
+Since $\beta$ has a height of $h+1$,
+the left and right children of $\beta$
+(defined as $T_2$ and $T_3$)
+must have heights $h-1$ and $h$ respectively.
+
+This is solved with a left rotation at $\beta$.
+$T_1$ will remain the left child of $\alpha$,
+with $T_2$ becoming the right child.
+Node $\alpha$ then becomes the left child of $\beta$,
+with $T_3$ remaining the right child.
+
+Because both $T_1$ and $T_2$ had height $h-1$,
+node $\alpha$ now has height $h$ and a balance factor of $0$.
+
+
+\noindent
+\textbf{Right-Left Case:}
+
+Butts.
 
 \section*{Deletions}
 
