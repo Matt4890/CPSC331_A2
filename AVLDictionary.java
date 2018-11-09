@@ -108,6 +108,10 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 		}
 
+		/**
+		 * Updates the local height variable with one more than the
+		 * max of its children's heights.
+		 */
 		void updateHeight() {
 
 			int leftHeight	= this.left == null ? -1 : this.left.height();
@@ -150,9 +154,14 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 	}
 
-	// Implements the required "search" method; to be supplied by
-	// students
-
+	/**
+	 * Searches for a specified key in the tree and returns its value,
+	 * throwing an exception if the key is not in the tree.
+	 * @param  key                    The key to search for in the tree.
+	 * @param  x                      The node to start searching at.
+	 * @return                        The value of the node with the specified key.
+	 * @throws NoSuchElementException If the key is not in the tree,
+	 */
 	private V search (K key, AVLNode x) throws NoSuchElementException {
 
 		if (x == null) {
@@ -175,9 +184,10 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 	}
 
-	// Implements a left rotation at an input node; to be supplied
-	// by students
-
+	/**
+	 * Performs a left rotation at a node.
+	 * @param x The node at which to perform a left rotation.
+	 */
 	private void rotateLeft (AVLNode x) {
 
 		// Aliases
@@ -186,10 +196,8 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		AVLNode p	= x.parent();
 
 		// Handling Children
-
 		x.right		= z;
 		z.parent	= x;
-
 		y.left		= x;
 		x.parent	= y;
 
@@ -213,9 +221,10 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 	}
 
-	// Implements a right rotation at an input node; to be supplied
-	// by students
-
+	/**
+	 * Performs a right rotation at a node.
+	 * @param x The node at which to perform a right rotation.
+	 */
 	private void rotateRight (AVLNode x) {
 
 		// Aliases
@@ -224,10 +233,8 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		AVLNode p	= x.parent();
 
 		// Handling Children
-
 		x.left		= z;
 		z.parent	= x;
-
 		y.right		= x;
 		x.parent	= y;
 
@@ -251,8 +258,11 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 	}
 
-	// Implements the "set" method supplied by Dictionary
-
+	/**
+	 * Sets the specified key in the tree to the specified value.
+	 * @param k The key at which to set the value.
+	 * @param v The value which should be stored with the key.
+	 */
 	public void set(K k, V v) {
 
 		if (root == null) {
@@ -267,9 +277,13 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 	}
 
-	// Implements the required "change" method; to be supplied
-	// by students
-
+	/**
+	 * Changes the specified key in the tree to the specified value,
+	 * inserting a node with the key-value pair if none is found.
+	 * @param k The key at which to set the value.
+	 * @param v The value which should be stored with the key.
+	 * @param x The node to start searching at.
+	 */
 	private void change (K k, V v, AVLNode x) {
 
 		AVLNode y = null;
@@ -348,6 +362,12 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 	}
 
+	/**
+	 * Balances a node after an insertion by performing the rotations
+	 * described in the assignment to solve the left-left, left-right,
+	 * right-left, and right-right cases.
+	 * @param x The deepest node with a balance factor of -2 or 2.
+	 */
 	private void balanceNode(AVLNode x) {
 
 		if (x.balanceFactor() == 2) {
