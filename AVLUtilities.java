@@ -206,10 +206,10 @@ public class AVLUtilities<K extends Comparable<K>, V> {
     };
     
     int balanceFactor = correctBalance(x);
-    boolean nodeBalanced = ((balanceFactor == 1)
+    boolean nodeBalanced = (((balanceFactor == 1)
                         || (balanceFactor == 0)
-                        || (balanceFactor == -1)
-                        || correctHeight);
+                        || (balanceFactor == -1))
+                        && correctHeight);
                         
     if ((!nodeBalanced) && verbose) {
       System.out.print("Node with key ");
