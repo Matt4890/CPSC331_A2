@@ -319,11 +319,11 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 			// Go up the tree, starting at the inserted node,
 			// balancing any nodes that aren't balanced properly.
 			while (y != root) {
+				y = y.parent();
 				y.updateHeight();
 				if (y.balanceFactor() == 2 || y.balanceFactor() == -2) {
 					balanceNode(y);
 				}
-				y = y.parent();
 			}
 
 		}
