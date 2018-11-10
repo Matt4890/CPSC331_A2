@@ -47,9 +47,73 @@
 
 \section*{AVL Tree Defenition and Properties}
 
-\subsection*{Question 1: Prove that $s_i \geq F_{i+1}+F_{i+2}-1$.}
+\subsection*{Question 1: Prove that $s_i \geq F_{i+1} + F_{i+2} - 1$ for all integers $i \geq -1$.}
 
-Induction and fun mathematics.
+\noindent
+\underline{Claim:}\\
+
+$s_i \geq F_{i+1} + F_{i+2} - 1$ for all integers $i \geq -1$.\\
+
+\noindent
+\underline{Proof by Strong Induction on $i$:}\\
+
+\noindent
+\textbf{Base Cases ($i = -1, 0$):}
+
+Let $i = -1$.\\
+Then $s_i = s_{-1} = 0 \geq 0 = 0 + 1 - 1 = F_0 + F_1 - 1 = F_{i+1} + F_{i+2} - 1$.
+
+Let $i = 0$.\\
+Then $s_i = s_0 = 1 \geq 1 = 1 + 1 - 1 = F_1 + F_2 - 1 = F_{i+1} + F_{i+2} - 1$.
+
+Thus the base cases hold true.\\
+
+\noindent
+\textbf{Inductive Step:}
+
+Let $k$ be an integer such that $k \geq 0$.
+
+\noindent
+\textit{Inductive Hypothesis:}
+
+Suppose that for all integers $m$ such that $-1 \leq m \leq k$, $s_k \geq F_{k+1} + F_{k+2} - 1$.
+
+\noindent
+\textit{Inductive Claim:}
+
+$s_{k+1} \geq F_{k+2} + F_{k+3} - 1$.\\
+
+According to equation 3 of assignment 2, $s_{k+1} \geq min(s_{k-1} + s_{k} + 1, 2s_k + 1)$.
+This gives us 2 cases:\\
+
+\noindent
+\textit{Case 1 ($s_{k-1} + s_{k} + 1 < 2s_k + 1$):}
+
+Then $s_{k+1} \geq s_{k-1} + s_{k} + 1$.
+It then follows that\ldots
+\begin{align*}
+s_{k+1}	& \geq s_{k-1} + s_{k} + 1\\
+		& \geq (F_k + F_{k+1} - 1) + (F_{k+1} + F_{k+2} - 1) + 1 \tag*{(By the I.H.)}\\
+		& = (F_{k+2} - 1) + (F_{k+3} - 1) + 1\\
+		& = F_{k+2} + F_{k+3} - 1
+\end{align*}
+
+Thus the inductive claim is true.\\
+
+\noindent
+\textit{Case 2 ($s_{k-1} + s_{k} + 1 \geq 2s_k + 1$):}
+
+Then $s_{k+1} \geq s_{k-1} + s_{k} + 1$.
+It then follows that\ldots
+\begin{align*}
+s_{k+1}	& \geq 2s_k + 1\\
+		& \geq 2 \cdot (F_{k+1} + F_{k+2} - 1) + 1 \tag*{(By the I.H.)}\\
+		& = 2 \cdot F_{k+3} - 1\\
+		& = F_{k+3} + F_{k+3} - 1\\
+		& \geq F_{k+2} + F_{k+3} - 1
+\end{align*}
+
+Thus the inductive claim is true.
 
 \section*{Insertions}
 
