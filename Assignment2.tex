@@ -83,13 +83,13 @@ Suppose that for all integers $m$ such that $-1 \leq m \leq k$, $s_k \geq F_{k+1
 
 $s_{k+1} \geq F_{k+2} + F_{k+3} - 1$.\\
 
-According to equation 3 of assignment 2, $s_{k+1} \geq min(s_{k-1} + s_{k} + 1, 2s_k + 1)$.
+According to equation 3 of assignment 2, $s_{i+1} \geq min(s_{i-1} + s_i + 1, 2s_i + 1)$ for all integers $i \geq 0$.
 This gives us 2 cases:\\
 
 \noindent
-\textit{Case 1 ($s_{k-1} + s_{k} + 1 < 2s_k + 1$):}
+\textit{Case 1 ($s_{k-1} + s_k + 1 < 2s_k + 1$):}
 
-Then $s_{k+1} \geq s_{k-1} + s_{k} + 1$.
+Then $s_{k+1} \geq s_{k-1} + s_k + 1$.
 It then follows that\ldots
 \begin{align*}
 s_{k+1}	& \geq s_{k-1} + s_{k} + 1\\
@@ -100,10 +100,11 @@ s_{k+1}	& \geq s_{k-1} + s_{k} + 1\\
 
 Thus the inductive claim is true.\\
 
+\newpage
 \noindent
 \textit{Case 2 ($s_{k-1} + s_{k} + 1 \geq 2s_k + 1$):}
 
-Then $s_{k+1} \geq s_{k-1} + s_{k} + 1$.
+Then $s_{k+1} \geq  2s_k + 1$.
 It then follows that\ldots
 \begin{align*}
 s_{k+1}	& \geq 2s_k + 1\\
