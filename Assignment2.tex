@@ -510,6 +510,28 @@ void delete (Node x) throws NoSuchElementException {
 
 \subsection*{Question 17: Provide a complete \code{AVLDictionary.java} class for assessment.} 
 
+\noindent
+\textbf{\code{change}:}
 
+In the \code{change} method for \code{AVLDictionary.java},
+the only difference from the \code{change} method from \code{BSTDictionary.java} is that if a node was inserted,
+the program loops up the tree from the inserted node to the root.
+In this loop,
+the program updates the height of each node,
+and checks the balance factor of the node as well.
+If a node has a balance factor of $-2$ or $2$,
+it performs the appropriate rotations to restore the balance factor to a value within $\{-1, 0, 1\}$.
+
+\noindent
+\textbf{\code{deleteNode}:}
+
+In the \code{deleteNode} method for \code{AVLDictionary.java},
+the only difference from the \code{deleteNode} method from \code{BSTDictionary.java} is that after a node is deleted,
+the program loops up the tree from the deleted node to the root.
+In this loop,
+the program updates the height of each node,
+and checks the balance factor of the node as well.
+If a node has a balance factor of $-2$ or $2$,
+it performs the appropriate rotations to restore the balance factor to a value within $\{-1, 0, 1\}$.
 
 \end{document}
