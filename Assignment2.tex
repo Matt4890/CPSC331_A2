@@ -224,7 +224,7 @@ node $\gamma$ has a balance factor of $0$.
 Rotations on a tree will preserve its binary tree property.
 Because,
 by definition,
-$\alpha$ is the lowest node on the path from the inserted leaf to the root that has a balance factor of either $2 or -2$,
+$\alpha$ is the lowest node on the path from the inserted leaf to the root that has a balance factor of either $2$ or $-2$,
 we know that all other nodes initially had a balance factor within the range of $\{-1, 0, 1\}$,
 including nodes inside the subtrees $T_1$, $T_2$, and $T_3$.
 After the adjustment,
@@ -453,44 +453,63 @@ void insert (Key k, Value v, Node x) throws ElementFoundException {
 \subsection*{Question 16: Briefly describe the structure of an algorithm for a deletion from an AVL tree.} 
 
 \begin{lstlisting}
-void delete (Key k, Node x) throws NoSuchElementException {
+void delete (Node x) throws NoSuchElementException {
 
-	if (x == null) {
-		throw new NoSuchElementException();
-	} else if (k < x.key) {
-		delete(k, x.left);
-	} else if (k > x.key) {
-		delete(k, x.right);
-	} else { // k == x.key
+	Node p = null;
+	
+	if (x has no children) {
+		
+		if (x == root) {
+			root = null;
+		} else {
+			if (x.key < x.parent.key) {
+				x.parent.left = null;
+			} else {
+				x.parent.right = null;
+			}
+			p = x.parent;
+			x.parent = null;
+		}
+
+	} else if (x has 1 child) {
+		
+		Node c = child of x;
+		if (x == root) {
+			c.parent = null;
+			root = c;
+		} else {
+			c.parent = x.parent;
+			Assign c as the appropriate child of its new parent.
+			p = x.parent;
+			x.parent = null;
+		}
+
+	} else { // x has 2 children
 
 		Node s = Successor of x;
+		x.key = s.key;
 		x.value = s.value;
+		delete(s);
 
-		Node y = s.parent
-		s.parent = null;
-		if (s.value < y.value) {
-			y.left = null;
-		} else {
-			y.right = null;
-		}
+	}
 
-		while (y != null) {
-			int oldHeight = y.height;
-			Update the height and balance factor of y.
-			if (y.balanceFactor == 2 || y.balanceFactor == -2) {
-				Balance the node.
-			}
-			if (oldHeight == y.height || Balanced a *-Equal case) {
-				break;
-			}
-			y = y.parent;
+	while (p != null) {
+		int oldHeight = p.height;
+		Update the height and balance factor of p.
+		if (p.balanceFactor == 2 || p.balanceFactor == -2) {
+			Balance the node.
 		}
-	
+		if (oldHeight == p.height || Balanced a *-Equal case) {
+			break;
+		}
+		p = p.parent;
 	}
 
 }
 \end{lstlisting}
 
 \subsection*{Question 17: Provide a complete \code{AVLDictionary.java} class for assessment.} 
+
+
 
 \end{document}
