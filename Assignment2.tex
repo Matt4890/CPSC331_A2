@@ -410,7 +410,7 @@ An adjustment using a left rotation at $\alpha$ will restore the tree's AVL prop
 \begin{lstlisting}
 void insert (Key k, Value v, Node x) throws ElementFoundException {
 
-	if (x.key < k) {
+	if (k < x.key) {
 
 		if (x has no left child){
 			Insert a node with key k and value v as the left child of x.
@@ -418,7 +418,7 @@ void insert (Key k, Value v, Node x) throws ElementFoundException {
 			insert(k, v, x.left);
 		}
 
-	} else if (x.key > k) {
+	} else if (k > x.key) {
 
 		if (x has no right child){
 			Insert a node with key k and value v as the right child of x.
@@ -426,7 +426,7 @@ void insert (Key k, Value v, Node x) throws ElementFoundException {
 			insert(k, v, x.right);
 		}
 
-	} else { // x.key == k
+	} else { // k == x.key
 		throw new ElementFoundException();
 		// Or x.value = v; if representing a dictionary
 	}
@@ -457,11 +457,11 @@ void delete (Key k, Node x) throws NoSuchElementException {
 
 	if (x == null) {
 		throw new NoSuchElementException();
-	} else if (x.key < k) {
+	} else if (k < x.key) {
 		delete(k, x.left);
-	} else if (x.key > k) {
+	} else if (k > x.key) {
 		delete(k, x.right);
-	} else { // x.key == k
+	} else { // k == x.key
 
 		Node s = Successor of x;
 		x.value = s.value;
