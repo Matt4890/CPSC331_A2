@@ -287,7 +287,7 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	private void change (K k, V v, AVLNode x) {
 
 		AVLNode y = null;
-		int result = x.key.compareTo(k);
+		int result = k.compareTo(x.key);
 
 		if (result == -1) {
 
@@ -356,7 +356,7 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 			throw new NoSuchElementException();
 		}
 
-		int result = x.key.compareTo(k);
+		int result = k.compareTo(x.key);
 		V v = x.value;
 
 		if (result == -1) {
