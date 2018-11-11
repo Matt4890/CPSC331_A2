@@ -362,19 +362,18 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 		if (x == null) {
 			throw new NoSuchElementException();
+		} else {
+			int result = k.compareTo(x.key);
+			V v = x.value;
+			if (result == -1) {
+				return deleteFromSubtree(k, x.left);
+			} else if (result == 1) {
+				return deleteFromSubtree(k, x.right);
+			} else { // result == 0
+				deleteNode(x);
+			}
+			return v;
 		}
-
-		int result = k.compareTo(x.key);
-		V v = x.value;
-
-		if (result == -1) {
-			deleteFromSubtree(k, x.left);
-		} else if (result == 1) {
-			deleteFromSubtree(k, x.right);
-		} else { // result == 0
-			deleteNode(x);
-		}
-		return v;
 
 	}
 
