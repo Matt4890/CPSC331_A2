@@ -164,15 +164,17 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	 */
 	private V search (K k, AVLNode x) throws NoSuchElementException {
 
+		int result = k.compareTo(x.key);
+
 		if (x == null) {
 
 			throw new NoSuchElementException();
 
-		} else if (x.key.compareTo(k) == -1) {
+		} else if (result == -1) {
 
 			return search(k, x.left());
 
-		} else if (x.key().compareTo(k) == 1) {
+		} else if (result == 1) {
 
 			return search(k, x.right());
 
