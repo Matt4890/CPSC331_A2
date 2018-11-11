@@ -114,8 +114,8 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		 */
 		void updateHeight() {
 
-			int leftHeight	= this.left == null ? -1 : this.left.height();
-			int rightHeight	= this.right == null ? -1 : this.right.height();
+			int leftHeight	= this.left == null ? -1 : this.left.height;
+			int rightHeight	= this.right == null ? -1 : this.right.height;
 			this.height		= leftHeight >= rightHeight ? leftHeight + 1 : rightHeight + 1;
 
 		}
@@ -157,24 +157,24 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	/**
 	 * Searches for a specified key in the tree and returns its value,
 	 * throwing an exception if the key is not in the tree.
-	 * @param  key                    The key to search for in the tree.
+	 * @param  k                    The key to search for in the tree.
 	 * @param  x                      The node to start searching at.
 	 * @return                        The value of the node with the specified key.
 	 * @throws NoSuchElementException If the key is not in the tree,
 	 */
-	private V search (K key, AVLNode x) throws NoSuchElementException {
+	private V search (K k, AVLNode x) throws NoSuchElementException {
 
 		if (x == null) {
 
 			throw new NoSuchElementException();
 
-		} else if (x.key().compareTo(key) == -1) {
+		} else if (x.key.compareTo(k) == -1) {
 
-			return search(key, x.left());
+			return search(k, x.left());
 
-		} else if (x.key().compareTo(key) == 1) {
+		} else if (x.key().compareTo(k) == 1) {
 
-			return search(key, x.right());
+			return search(k, x.right());
 
 		} else { // x.key().compareTo(key) == 0
 
@@ -191,9 +191,9 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	private void rotateLeft (AVLNode x) {
 
 		// Aliases
-		AVLNode y	= x.right();
-		AVLNode z	= y.left();
-		AVLNode p	= x.parent();
+		AVLNode y	= x.right;
+		AVLNode z	= y.left;
+		AVLNode p	= x.parent;
 
 		// Handling Children
 		x.right		= z;
@@ -209,7 +209,7 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 		} else {
 
-			if (x.key().compareTo(p.key()) == -1) { // If x was a left child
+			if (x.key.compareTo(p.key) == -1) { // If x was a left child
 				p.left	= y;
 			} else {
 				p.right	= y;
@@ -228,9 +228,9 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	private void rotateRight (AVLNode x) {
 
 		// Aliases
-		AVLNode y	= x.left();
-		AVLNode z	= y.right();
-		AVLNode p	= x.parent();
+		AVLNode y	= x.left;
+		AVLNode z	= y.right;
+		AVLNode p	= x.parent;
 
 		// Handling Children
 		x.left		= z;
@@ -246,7 +246,7 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 		} else {
 
-			if (x.key().compareTo(p.key()) == -1) { // If x was a left child
+			if (x.key.compareTo(p.key) == -1) { // If x was a left child
 				p.left	= y;
 			} else {
 				p.right	= y;
@@ -287,45 +287,46 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	private void change (K k, V v, AVLNode x) {
 
 		AVLNode y = null;
+		int result = x.key.compareTo(k);
 
-		if (x.key().compareTo(k) == -1) {
+		if (result == -1) {
 
-			if (x.left() == null){
+			if (x.left == null){
 				y			= new AVLNode(k, v);
 				x.left		= y;
 				y.parent	= x;
 			} else {
-				change(k, v, x.left());
+				change(k, v, x.left);
 			}
 
-		} else if (x.key().compareTo(k) == 1) {
+		} else if (result == 1) {
 
-			if (x.right() == null){
+			if (x.right == null){
 				y			= new AVLNode(k, v);
 				x.right		= y;
 				y.parent	= x;
 			} else {
-				change(k, v, x.right());
+				change(k, v, x.right);
 			}
 
-		} else { // x.key().compareTo(key) == 0
+		} else { // result == 0
 
 			x.value	= v;
 
 		}
 
-		if (y != null) { // If a node was inserted
-
-			// Go up the tree, starting at the inserted node,
-			// balancing any nodes that aren't balanced properly.
-			while (y != root) {
-				y = y.parent();
-				y.updateHeight();
-				if (y.balanceFactor() == 2 || y.balanceFactor() == -2) {
-					balanceNode(y);
-				}
+		// Go up the tree, starting at the inserted node,
+		// balancing any nodes that aren't balanced properly.
+		while (y != null) {
+			int oldHeight = y.height;
+			y.updateHeight();
+			if (y.balanceFactor() == 2 || y.balanceFactor() == -2) {
+				balanceNode(y);
 			}
-
+			if (oldHeight == y.height) {
+				break;
+			}
+			y = y.parent;
 		}
 
 	}
@@ -351,7 +352,21 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	 */
 	private V deleteFromSubtree(K k, AVLNode x) throws NoSuchElementException {
 
-		return null;          // This line must be replaced.
+		if (x == null) {
+			throw new NoSuchElementException();
+		}
+
+		int result = x.key.compareTo(k);
+
+		if (result == -1) {
+			deleteFromSubtree(k, x.left);
+		} else if (result == 1) {
+			deleteFromSubtree(k, x.right);
+		} else { // result == 0
+			V v = x.value;
+			deleteNode(x);
+			return v;
+		}
 
 	}
 
@@ -360,6 +375,71 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	 * @param x The node to delete from the tree.
 	 */
 	private void deleteNode (AVLNode x) {
+
+		AVLNode p = null;
+
+		if (x.left== null && x.right == null) { // x has no children
+
+			if (x == root) {
+				root = null;
+			} else {
+				p = x.parent;
+				if (x.key.compareTo(p.key) == -1) {
+					p.left = null;
+				} else {
+					p.right = null;
+				}
+				x.parent = null;
+			}
+
+		} else if (x.left == null || x.right== null) { // x has 1 child
+
+			AVLNode c = null;
+			if (x.left == null) {
+				c = x.right;
+				x.right = null;
+			} else {
+				c = x.left;
+				x.left = null;
+			}
+
+			if (x == root) {
+				c.parent = null;
+				root = c;
+			} else {
+				p = x.parent;
+				c.parent = p;
+				if (x.key.compareTo(p.key) == -1) {
+					p.left = c;
+				} else {
+					p.right = c;
+				}
+				x.parent = null;
+			}
+
+		} else { // x has 2 children
+
+			AVLNode s = successor(x);
+			x.key = s.key;
+			x.value = s.value;
+			deleteNode(s);
+
+		}
+
+		// Go up the tree, starting at the inserted node,
+		// balancing any nodes that aren't balanced properly.
+		while (y != null) {
+			int oldHeight = y.height;
+			boolean equalCase = false;
+			y.updateHeight();
+			if (y.balanceFactor() == 2 || y.balanceFactor() == -2) {
+				equalCase = balanceNode(y);
+			}
+			if (oldHeight == y.height || equalCase) {
+				break;
+			}
+			y = y.parent;
+		}
 
 	}
 
@@ -370,7 +450,13 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	 */
 	private AVLNode successor (AVLNode x) {
 
-		return null;      // This line must be replaced.
+		x = x.right;
+
+		while (x.left != null) {
+			x = x.left;
+		}
+
+		return x;
 
 	}
 
@@ -379,28 +465,31 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 	 * described in the assignment to solve the left-left, left-right,
 	 * right-left, and right-right cases.
 	 * @param x The deepest node with a balance factor of -2 or 2.
+	 * @return 	True if a *-Equal case was balanced. False otherwise.
 	 */
-	private void balanceNode(AVLNode x) {
+	private boolean balanceNode(AVLNode x) {
+
+		int result = -3; // To prevent false positives (unattainable value)
 
 		if (x.balanceFactor() == 2) {
 
-			if (x.left().balanceFactor() == 1) {		// Left-Left Case
-				rotateRight(x);
-			} else { // x.left().balanceFactor() == -1	// Left-Right Case
-				rotateLeft(x.left());
-				rotateRight(x);
+			result = x.left.balanceFactor();
+			if (result == -1) {
+				rotateLeft(x.left);
 			}
+			rotateRight(x);
 
 		} else if (x.balanceFactor() == -2) {
 
-			if (x.right().balanceFactor() == 1) {		// Right-Left Case
-				rotateRight(x.right());
-				rotateLeft(x);
-			} else { // x.right().balanceFactor() == -1	// Right-Right Case
-				rotateLeft(x);
+			result = x.right.balanceFactor();
+			if (result == 1) {
+				rotateRight(x.right);
 			}
+			rotateLeft(x);
 
 		}
+
+		return result == 0;
 
 	}
 
