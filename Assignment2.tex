@@ -410,42 +410,86 @@ An adjustment using a left rotation at $\alpha$ will restore the tree's AVL prop
 \begin{lstlisting}
 void insert (Key k, Value v, Node x) throws ElementFoundException {
 
-		if (x.key < k) {
+	if (x.key < k) {
 
-			if (x has no left child){
-				Insert a node with key k and value v as the left child of x.
-			} else {
-				insert(k, v, x.left);
-			}
-
-		} else if (x.key > k) {
-
-			if (x has no right child){
-				Insert a node with key k and value v as the right child of x.
-			} else {
-				insert(k, v, x.right);
-			}
-
-		} else { // x.key == k
-			throw new ElementFoundException();
-			// Or x.value = v; if representing a dictionary
+		if (x has no left child){
+			Insert a node with key k and value v as the left child of x.
+		} else {
+			insert(k, v, x.left);
 		}
 
-		if (a node y was inserted) {
+	} else if (x.key > k) {
 
-			while (y != root) {
-				y = y.parent;
-				Update the height and balance factor of y.
-				if (y.balanceFactor == 2 || y.balanceFactor == -2) {
-					Balance the node.
-				}
+		if (x has no right child){
+			Insert a node with key k and value v as the right child of x.
+		} else {
+			insert(k, v, x.right);
+		}
 
+	} else { // x.key == k
+		throw new ElementFoundException();
+		// Or x.value = v; if representing a dictionary
+	}
+
+	if (a node y was inserted) {
+
+		while (y != null) {
+			int oldHeight = y.height;
+			Update the height and balance factor of y.
+			if (y.balanceFactor == 2 || y.balanceFactor == -2) {
+				Balance the node.
+			}
+			if (oldHeight == y.height) {
+				break;
+			}
+			y = y.parent;
 		}
 
 	}
+
+}
 \end{lstlisting}
 
 \subsection*{Question 16: Briefly describe the structure of an algorithm for a deletion from an AVL tree.} 
+
+\begin{lstlisting}
+void delete (Key k, Node x) throws NoSuchElementException {
+
+	if (x == null) {
+		throw new NoSuchElementException();
+	} else if (x.key < k) {
+		delete(k, x.left);
+	} else if (x.key > k) {
+		delete(k, x.right);
+	} else { // x.key == k
+
+		Node s = Successor of x;
+		x.value = s.value;
+
+		Node y = s.parent
+		s.parent = null;
+		if (s.value < y.value) {
+			y.left = null;
+		} else {
+			y.right = null;
+		}
+
+		while (y != null) {
+			int oldHeight = y.height;
+			Update the height and balance factor of y.
+			if (y.balanceFactor == 2 || y.balanceFactor == -2) {
+				Balance the node.
+			}
+			if (oldHeight == y.height || Balanced a *-Equal case) {
+				break;
+			}
+			y = y.parent;
+		}
+	
+	}
+
+}
+\end{lstlisting}
 
 \subsection*{Question 17: Provide a complete \code{AVLDictionary.java} class for assessment.} 
 
