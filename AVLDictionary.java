@@ -197,7 +197,9 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 		// Handling Children
 		x.right		= z;
-		z.parent	= x;
+		if (z != null){
+			z.parent	= x;
+		}
 		y.left		= x;
 		x.parent	= y;
 
@@ -219,6 +221,9 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 		}
 
+		x.updateHeight();
+		y.updateHeight();
+
 	}
 
 	/**
@@ -234,7 +239,9 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 
 		// Handling Children
 		x.left		= z;
-		z.parent	= x;
+		if (z != null){
+			z.parent	= x;
+		}
 		y.right		= x;
 		x.parent	= y;
 
@@ -255,6 +262,9 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 			y.parent = p;
 
 		}
+
+		x.updateHeight();
+		y.updateHeight();
 
 	}
 
@@ -318,13 +328,9 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		// Go up the tree, starting at the inserted node,
 		// balancing any nodes that aren't balanced properly.
 		while (y != null) {
-			int oldHeight = y.height;
 			y.updateHeight();
 			if (y.balanceFactor() == 2 || y.balanceFactor() == -2) {
 				balanceNode(y);
-			}
-			if (oldHeight == y.height) {
-				break;
 			}
 			y = y.parent;
 		}
@@ -429,13 +435,12 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		// Go up the tree, starting at the inserted node,
 		// balancing any nodes that aren't balanced properly.
 		while (p != null) {
-			int oldHeight = p.height;
 			boolean equalCase = false;
 			p.updateHeight();
 			if (p.balanceFactor() == 2 || p.balanceFactor() == -2) {
 				equalCase = balanceNode(p);
 			}
-			if (oldHeight == p.height || equalCase) {
+			if (equalCase) {
 				break;
 			}
 			p = p.parent;
