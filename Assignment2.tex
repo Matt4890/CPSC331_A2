@@ -121,31 +121,40 @@ Thus the inductive claim is true.
 \subsection*{Question 2: Briefly explain why the only nodes in a tree whose heights or balance factors might
 have changed lie on the path from the a leaf up to the root of the tree.} 
 
-Both the height and the balance factor of a node are exclusively determined by the connected nodes of a greater depth.
+By the definition,
+node height only depends on the greatest depth of a subtree with the supplied node as the root.
+The height of a node can only change if a descendant to said node is added or removed from the tree.
+Any other node that is not an ancestor of the newly inserted/deleted node therefore cannot have had their height altered.
+Also,
+since balance factor is defined by the difference in height of a node's children,
+then if the height of a node is unaltered,
+the balance factor of the node is also unaltered.
 
 \subsection*{Question 3: Briefly explain why the balance factors of the nodes on the above path are all either $2$, $1$, $0$, $-1$, or $-2$.} 
 
 Assuming the tree was indeed an AVL tree before the insertion, 
-then all nodes of the tree must have a balance factor within $\{1, 0, -1\}$. 
+then all nodes of the tree must have a balance factor within $\{-1, 0, 1\}$. 
 By inserting a node, 
 the balance factor of any preceeding node will be modified by a value of either $1$ or $-1$, 
 as only one node was inserted. 
 Thus, 
-the extreme values of the set of possible balance factors may become more ``extreme'' by an absolute value of 1, 
+the extreme values of the set of possible balance factors may increase or decrease by an absolute value of 1, 
 meaning $-1$ may become $-2$ and $1$ may become $2$.
-Plus the other values are still attainable.
+The balance factors of $-1$, $0$, and $1$ are also still possible via different combonations of adding or subtracting 1 from any of the previous possible balance factor values.
 
 \subsection*{Question 4: Explain why if $v$ is some node on this path in the tree, and the height of $v$ has not been changed, then the heights and balanced factors of all the nodes on the path that are above $v$ have not been changed either.} 
 
-Height: 
 The height of a node depends on the maximum height of its children. 
 If neither of the node's children's heights have changed, 
 then the node's own height cannot have changed.
+Since the height of $v$ has not been changed,
+then the height of any ancestor of $v$ cannot have changed either.
 
-Balance Factor: 
 The balance factor of a node is defined as the height of the left child minus the height of the right child. 
-If neither of the node's children's balance factors have changed, 
+If neither of the node's children's heights have changed, 
 then the node's own balance factor cannot have changed.
+Since the height of $v$ has not been changed,
+then the balance factor of any ancestor of $v$ cannot have changed either.
 
 \subsection*{Question 5: Comparing Figures 5 and 6, confirm that node $\alpha$ has height h and balance factor $0$ after the described rotation.} 
 
@@ -159,25 +168,35 @@ Because each child of $\alpha$ has the same height,
 the balance factor of $\alpha$ is $0$. 
 Also, 
 the maximum height of either child of $\alpha$ is $h-1$, 
-meaning that the height of $\alpha$ is indeed $h$.
+meaning that the height of $\alpha$ is indeed one more than the height of its deepest subtree;
+$(h-1) + 1 = h$.
 
 \subsection*{Question 6: Confirm that the node $\beta$ has height $h+1$ and balance factor $0$ as well after the described rotation.} 
 
-Something something copy question 5.
+We know that subtree $T_1$ has a height of $h$ before and after the rotation.
+We also know that $\alpha$ has a height of $h$.
+Thus,
+by similar logic as question 5,
+we know that $\beta$ must have a height of one greater than $h$;
+$h+1$.
+Also,
+the difference in height of each child of $\beta$ is equal to $h-h$,
+which results in a balance factor of $0$.
 
 \subsection*{Question 7: Explain why the binary search tree is once again an AVL tree after the described rotation.} 
 
-\ldots but $\alpha$ had height $h+2$ before the rotation,
-not $h+1$\ldots
-
-\textit{Assuming $\alpha$ was the \textbf{only} problem node in the tree\ldots}
-
-Since node $\alpha$ now has a balance factor of $0$,
-node $\beta$ also has a balance factor of $0$,
+The right rotation operation on $\alpha$ will preserve the binary tree property.
+We know that before the insertion,
+the tree was an AVL tree
+(because alpha is the deepest node to have a balance factor of 2 or -2).
+Therefore $T_2$ and $T_3$,
+which were part of the original AVL tree,
+are by definition also AVL trees themselves.
+Since nodes $\alpha$ and $\beta$ now have a balance factor of $0$,
 and no nodes above or below nodes $\alpha$ and $\beta$ have been modified,
-the binary search tree is an AVL tree once again.
+the binary search tree is an AVL tree once again because all nodes in the tree have a balance factor within $\{-1, 0, 1\}$.
 
-\subsection*{Question 8: Confirm that $\alpha$ and $\beta$ each have a balance factor within $\{−1, 0, 1\}$ and height $h$ after this adjustment.} 
+\subsection*{Question 8: Confirm that $\alpha$ and $\beta$ each have a balance factor within $\{-1, 0, 1\}$ and height $h$ after this adjustment.} 
 
 After the rotations,
 $T_1$ and $T_3$ maintain height $h-1$,
@@ -189,7 +208,8 @@ Also,
 because there is a chance for either $T_{2a}$ or $T_{2b}$ to have height $h-2$
 (but not both),
 node $\beta$ will have a balance factor of either $0$ or $1$,
-and node $\alpha$ will have a balance factor of either $0$ or $-1$.
+and node $\alpha$ will have a balance factor of either $0$ or $-1$,
+both of which will be in $\{-1, 0, 1\}$.
 Only one of these nodes can have a balance factor that is not $0$.
 
 \subsection*{Question 9: Explain why $\gamma$ has height $h+1$ and balance factor $0$ after this operation. Using this, explain why the resulting tree is an AVL tree after this operation.} 
@@ -201,11 +221,16 @@ node $\gamma$ must have height $h+1$ after the rotations.
 Seeing as $\alpha$ and $\beta$ also have the same height as each other,
 node $\gamma$ has a balance factor of $0$.
 
-\textit{Assuming $\alpha$ was the \textbf{only} problem node in the tree\ldots}
-
-Since node $\alpha$ now has a balance factor within $\{−1, 0, 1\}$,
-node $\beta$ also has a balance factor within $\{−1, 0, 1\}$,
-node $\gamma$ also a balance factor of $0$,
+Rotations on a tree will preserve its binary tree property.
+Because,
+by definition,
+$\alpha$ is the lowest node on the path from the inserted leaf to the root that has a balance factor of either $2 or -2$,
+we know that all other nodes initially had a balance factor within the range of $\{-1, 0, 1\}$,
+including nodes inside the subtrees $T_1$, $T_2$, and $T_3$.
+After the adjustment,
+the subtrees were unaltered and therefore are still AVL trees.
+Since nodes $\alpha$ and $\beta$ now have a balance factor within $\{-1, 0, 1\}$,
+node $\gamma$ a balance factor of $0$,
 and no nodes above or below nodes $\alpha$, $\beta$, and $\gamma$ have been modified,
 the binary search tree is an AVL tree once again.
 
@@ -231,8 +256,7 @@ both children of node $\beta$ must have had height $h-1$ before the insertion.
 If this was not true,
 then either $\beta$ would have become the deepest node with a balance factor of either $-2$ or $2$,
 or $\beta$ would not have had height $h$ before the insertion.
-
-\textbf{DO WE KEEP THAT LAST SENTENCE?}
+Two cases follow:
 
 \noindent
 \textbf{Right-Right Case:}
@@ -276,7 +300,6 @@ while the other can have either $h-1$ or $h-2$.
 
 This is solved with a right rotation at $\beta$,
 followed by a left rotation at $\alpha$.
-% Draw this out and then do this section.
 $T_1$ will remain the left child of $\alpha$,
 with $T_{2a}$ becoming the right child.
 $T_3$ will remain the right child of $\beta$,
@@ -300,17 +323,126 @@ Thus this problem node has been fixed.
 
 \subsection*{Question 11: Suppose that you perform a right rotation at $\alpha$ so that the subtree with root $\beta$ after this adjustment is as shown in Figure 6. Briefly explain why $\alpha$ has height $h+1$ and balance factor $1$ after this adjustment.} 
 
-
+Node $\alpha$ will have children of height $h$ and $h-1$
+(from subtrees $T_2$ and $T_3$ respectively).
+Thus the height of $\alpha$ is the max of the children,
+plus 1; $(h)+1=h+1$.
+Also,
+the balance factor of $\alpha$ will be $h - (h - 1)$,
+which is $1$.
 
 \subsection*{Question 12: Briefly explain why $\beta$ has height $h+2$ and balance factor $-1$ after this adjustment.} 
 
+The children of node $\beta$ have height $h$ and $h+1$
+(from subtree $T_1$ and node $\alpha$ respectively).
+Thus the height of $\beta$ is the max of the children,
+plus 1;
+$(h+1)+1 = h+2$.
+Also,
+the balance factor of $\beta$ will be $h - (h + 1)$,
+which is $-1$.
+
 \subsection*{Question 13: Briefly explain why the entire binary search tree is an AVL tree after this adjustment.} 
 
+The right rotation at $\alpha$ will preserve the binary tree property of the tree.
+This is because $\alpha$ was the deepest node from the promoted node,
+and up to the root,
+that did not have an allowed balance factor.
+Therefore, $\beta$ and subtrees
+$T_1$,
+$T_2$,
+and $T_3$ all have balance factors within $\{-1, 0, 1\}$ because they are below $\alpha$.
+We have shown in questions 11 and 12 that both $\beta$ and $\alpha$ have balance factors of $-1$ and $1$ respectively after the rotation.
+Also,
+the subtrees $T_1$,
+$T_2$,
+and $T_3$ have not been altered through any more insertions/deletions.
+Therefore,
+because $\beta$,
+$\alpha$,
+and the subtrees $T_1$,
+$T_2$,
+and $T_3$ all have balance factors within $\{-1, 0, 1\}$ and the tree is a binary search tree,
+this tree is indeed an AVL tree.
+
+We also know that the height of $\alpha$ before was $h+2$,
+whilst the new height of $\beta$ after the adjustment is also $h+2$.
+Being the top nodes and having the same height,
+we know that none of the balance factors above will be changed
+(as explained in the point about node $v$ if its balance factor is unchanged,
+then anything above is also unchanged in balance factor).
+We know that before the deletion,
+the entire tree was an AVL tree.
+Therefore,
+we can conclude that the whole tree is an AVL tree again after the adjustment.
+
 \subsection*{Question 14: Now consider the case that $\alpha$ has balance factor $-2$, instead, so that the subtree with root $\alpha$ is as shown in Figure 10. Briefly describe another three cases corresponding to this, along with the adjustments that should be made for each.} 
+
+\noindent
+\textbf{Right-Left Case:}
+Here, $\beta$
+(the right child of $\alpha$)
+has a left child of height $h$ and a right child of height $h-1$.
+This left child of $\beta$
+(i.e. $\gamma$)
+has at least one child with height $h-1$ and the other is either $h-1$ or $h-2$.
+An adjustment using a right rotation at $\beta$ followed by a left rotation at $\alpha$ will restore the tree's AVL properties.
+
+\noindent
+\textbf{Right-Right Case:}
+Here, $\beta$
+(again, the right child of $\alpha$)
+has a right child of height $h$ and a left child of height $h-1$.
+An adjustment using a left rotation at $\alpha$ will restore the tree's AVL properties.
+
+\noindent
+\textbf{Right-Equal Case:}
+Here, $\beta$
+(like above)
+has two children with the same height,
+$h$.
+An adjustment using a left rotation at $\alpha$ will restore the tree's AVL properties.
 
 \section*{Implementing an AVL Tree}
 
 \subsection*{Question 15: Briefly describe the structure of an algorithm for an insertion into an AVL tree.} 
+
+\begin{lstlisting}
+void insert (Key k, Value v, Node x) {
+
+		if (x.key < k) {
+
+			if (x has no left child){
+				Insert a node with key k and value v as the left child of x.
+			} else {
+				change(k, v, x.left);
+			}
+
+		} else if (x.key == k) {
+
+			if (x has no right child){
+				Insert a node with key k and value v as the right child of x.
+			} else {
+				change(k, v, x.right);
+			}
+
+		} else { // x.key > k
+			x.value	= v;
+		}
+
+		if (a node y was inserted) {
+
+			while (y != root) {
+				y = y.parent;
+				Update the height of y.
+				if (y.balanceFactor == 2 || y.balanceFactor == -2) {
+					Balance the node.
+				}
+
+		}
+
+	}
+\end{lstlisting}
 
 \subsection*{Question 16: Briefly describe the structure of an algorithm for a deletion from an AVL tree.} 
 
