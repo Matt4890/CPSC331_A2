@@ -408,7 +408,7 @@ An adjustment using a left rotation at $\alpha$ will restore the tree's AVL prop
 \subsection*{Question 15: Briefly describe the structure of an algorithm for an insertion into an AVL tree.} 
 
 \begin{lstlisting}
-void insert (Key k, Value v, Node x) {
+void insert (Key k, Value v, Node x) throws ElementFoundException {
 
 		if (x.key < k) {
 
@@ -418,7 +418,7 @@ void insert (Key k, Value v, Node x) {
 				change(k, v, x.left);
 			}
 
-		} else if (x.key == k) {
+		} else if (x.key > k) {
 
 			if (x has no right child){
 				Insert a node with key k and value v as the right child of x.
@@ -426,8 +426,8 @@ void insert (Key k, Value v, Node x) {
 				change(k, v, x.right);
 			}
 
-		} else { // x.key > k
-			x.value	= v;
+		} else { // x.key == k
+			throw new ElementFoundException();
 		}
 
 		if (a node y was inserted) {
