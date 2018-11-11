@@ -357,16 +357,16 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		}
 
 		int result = x.key.compareTo(k);
+		V v = x.value;
 
 		if (result == -1) {
 			deleteFromSubtree(k, x.left);
 		} else if (result == 1) {
 			deleteFromSubtree(k, x.right);
 		} else { // result == 0
-			V v = x.value;
 			deleteNode(x);
-			return v;
 		}
+		return v;
 
 	}
 
