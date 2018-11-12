@@ -579,7 +579,6 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		while (p != null) {
 
 			// Assertion: There may be a problem node with a bad balance factor.
-			int oldHeight = p.height;
 			boolean equalCase = false;
 			p.updateHeight();
 			if (p.balanceFactor() == 2 || p.balanceFactor() == -2) {

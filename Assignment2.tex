@@ -438,8 +438,9 @@ void insert (Key k, Value v, Node x) throws ElementFoundException {
 			Update the height and balance factor of y.
 			if (y.balanceFactor == 2 || y.balanceFactor == -2) {
 				Balance the node.
+				break;
 			}
-			if (oldHeight == y.height) {
+			if (oldHeight != 0 && oldHeight == y.height) {
 				break;
 			}
 			y = y.parent;
@@ -462,12 +463,12 @@ void delete (Node x) {
 		if (x == root) {
 			root = null;
 		} else {
-			if (x.key < x.parent.key) {
-				x.parent.left = null;
-			} else {
-				x.parent.right = null;
-			}
 			p = x.parent;
+			if (x.key < x.parent.key) {
+				p.left = null;
+			} else {
+				p.right = null;
+			}
 			x.parent = null;
 		}
 
@@ -478,9 +479,9 @@ void delete (Node x) {
 			c.parent = null;
 			root = c;
 		} else {
-			c.parent = x.parent;
-			Assign c as the appropriate child of its new parent.
 			p = x.parent;
+			c.parent = p;
+			Assign c as the appropriate child of its new parent.
 			x.parent = null;
 		}
 
@@ -494,12 +495,11 @@ void delete (Node x) {
 	}
 
 	while (p != null) {
-		int oldHeight = p.height;
 		Update the height and balance factor of p.
 		if (p.balanceFactor == 2 || p.balanceFactor == -2) {
 			Balance the node.
 		}
-		if (oldHeight == p.height || Balanced a *-Equal case) {
+		if (Balanced a *-Equal case) {
 			break;
 		}
 		p = p.parent;
@@ -509,6 +509,20 @@ void delete (Node x) {
 \end{lstlisting}
 
 \subsection*{Question 17: Provide a complete \code{AVLDictionary.java} class for assessment.} 
+
+\noindent
+\textbf{\code{rotateLeft}:}
+
+In the \code{rotateLeft} method for \code{AVLDictionary.java},
+the only difference from the \code{rotateLeft} method from \code{BSTDictionary.java} is that after a node is rotated,
+the heights of nodes $\alpha$ and $\beta$ are updated.
+
+\noindent
+\textbf{\code{rotateRight}:}
+
+In the \code{rotateRight} method for \code{AVLDictionary.java},
+the only difference from the \code{rotatRight} method from \code{BSTDictionary.java} is that after a node is rotated,
+the heights of nodes $\alpha$ and $\beta$ are updated.
 
 \noindent
 \textbf{\code{change}:}
