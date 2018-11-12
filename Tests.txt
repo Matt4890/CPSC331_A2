@@ -1,0 +1,437 @@
+Script started on 2018-11-12 15:01:58-0700
+[3gH    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H  ]0;matt@matt-SB2-Ubuntu: ~/Code/Classes/CPSC331/Assignments/Assignment_2[01;32mmatt@matt-SB2-Ubuntu[00m:[01;34m~/Code/Classes/CPSC331/Assignments/Assignment_2[00m$ shutdown nowcrot -z ~/Code/Classes/CPSC331/Assignments/Assignment_2/Tests.png[33Pjava cpsc331.assignment2.AVLTest5[K1[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kc *.java
+]0;matt@matt-SB2-Ubuntu: ~/Code/Classes/CPSC331/Assignments/Assignment_2[01;32mmatt@matt-SB2-Ubuntu[00m:[01;34m~/Code/Classes/CPSC331/Assignments/Assignment_2[00m$ javac *.javashutdown nowcrot -z ~/Code/Classes/CPSC331/Assignments/Assignment_2/Tests.png[33Pjava cpsc331.assignment2.AVLTest5[K1
+
+Initializing a new AVLDictionary with integers as keys and strings  as values.
+
+Inserting key 1 and value one.
+Inserting key 2 and value two.
+Inserting key 3 and value three.
+Inserting key 4 and value four.
+Inserting key 5 and value five.
+Inserting key 6 and value six.
+Inserting key 7 and value seven.
+Inserting key 8 and value eight.
+Inserting key 9 and value nine.
+Inserting key 10 and value ten.
+Inserting key 11 and value eleven.
+Inserting key 12 and value twelve.
+Inserting key 13 and value thirteen.
+Inserting key 14 and value fourteen.
+Inserting key 15 and value fifteen.
+Inserting key 16 and value sixeen.
+Inserting key 17 and value seventeen.
+Inserting key 18 and value eighteen.
+Inserting key 19 and value nineteen.
+Inserting key 20 and value twenty.
+
+Getting the value with key 1.
+Value was correctly reported to be one.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 20.
+remove correctly reported that the associated value was twenty.
+
+Removing the node with key 19.
+remove correctly reported that the associated value was nineteen.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 18.
+remove correctly reported that the associated value was eighteen.
+
+Removing the node with key 17.
+remove correctly reported that the associated value was seventeen.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 16.
+remove correctly reported that the associated value was sixteen.
+
+Removing the node with key 15.
+remove correctly reported that the associated value was fifteen.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 14.
+remove correctly reported that the associated value was fourteen.
+
+Removing the node with key 13.
+remove correctly reported that the associated value was thirteen.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 12.
+remove correctly reported that the associated value was twelve.
+
+Removing the node with key 11.
+remove correctly reported that the associated value was eleven.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 10.
+remove correctly reported that the associated value was ten.
+
+Removing the node with key 9.
+remove correctly reported that the associated value was nine.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 8.
+remove correctly reported that the associated value was eight.
+
+Removing the node with key 7.
+remove correctly reported that the associated value was seven.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 6.
+remove correctly reported that the associated value was six.
+
+Removing the node with key 5.
+remove correctly reported that the associated value was five.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 4.
+remove correctly reported that the associated value was four.
+
+Removing the node with key 3.
+remove correctly reported that the associated value was three.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 2.
+remove correctly reported that the associated value was two.
+
+Removing the node with key 1.
+remove correctly reported that the associated value was one.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Checking whether this is now an empty tree.
+The tree is now empty, as required.
+
+]0;matt@matt-SB2-Ubuntu: ~/Code/Classes/CPSC331/Assignments/Assignment_2[01;32mmatt@matt-SB2-Ubuntu[00m:[01;34m~/Code/Classes/CPSC331/Assignments/Assignment_2[00m$ java cpsc331.assignment2.AVLTest1[K2
+
+Initializing a new AVLDictionary with integers as keys and strings  as values.
+
+Inserting key 20 and value twenty.
+Inserting key 19 and value nineteen.
+Inserting key 18 and value eighteen.
+Inserting key 17 and value seventeen.
+Inserting key 16 and value sixteen.
+Inserting key 15 and value fifteen.
+Inserting key 14 and value fourteen.
+Inserting key 13 and value thirteen.
+Inserting key 12 and value twelve.
+Inserting key 11 and value eleven.
+Inserting key 10 and value ten.
+Inserting key 9 and value nine.
+Inserting key 8 and value eight.
+Inserting key 7 and value seven.
+Inserting key 6 and value six.
+Inserting key 5 and value five.
+Inserting key 4 and value four.
+Inserting key 3 and value three.
+Inserting key 2 and value two.
+Inserting key 1 and value one.
+
+Getting the value with key 1.
+Value was correctly reported to be one.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 20.
+remove correctly reported that the associated value was twenty.
+
+Removing the node with key 1.
+remove correctly reported that the associated value was one.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 19.
+remove correctly reported that the associated value was nineteen.
+
+Removing the node with key 2.
+remove correctly reported that the associated value was two.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 18.
+remove correctly reported that the associated value was eighteen.
+
+Removing the node with key 3.
+remove correctly reported that the associated value was three.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 17.
+remove correctly reported that the associated value was seventeen.
+
+Removing the node with key 4.
+remove correctly reported that the associated value was four.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 16.
+remove correctly reported that the associated value was sixteen.
+
+Removing the node with key 5.
+remove correctly reported that the associated value was five.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 15.
+remove correctly reported that the associated value was fifteen.
+
+Removing the node with key 6.
+remove correctly reported that the associated value was six.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 14.
+remove correctly reported that the associated value was fourteen.
+
+Removing the node with key 7.
+remove correctly reported that the associated value was seven.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 13.
+remove correctly reported that the associated value was thirteen.
+
+Removing the node with key 8.
+remove correctly reported that the associated value was eight.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 12.
+remove correctly reported that the associated value was twelve.
+
+Removing the node with key 9.
+remove correctly reported that the associated value was nine.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 11.
+remove correctly reported that the associated value was eleven.
+
+Removing the node with key 10.
+remove correctly reported that the associated value was ten.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Checking whether this is now an empty tree.
+The tree is now empty, as required.
+
+]0;matt@matt-SB2-Ubuntu: ~/Code/Classes/CPSC331/Assignments/Assignment_2[01;32mmatt@matt-SB2-Ubuntu[00m:[01;34m~/Code/Classes/CPSC331/Assignments/Assignment_2[00m$ java cpsc331.assignment2.AVLTest2[K3
+
+Initializing a new AVLDictionary with integers as keys and strings  as values.
+
+Inserting key 5 and value five.
+Inserting key 18 and value eighteen.
+Inserting key 10 and value ten.
+Inserting key 13 and value thirteen.
+Inserting key 14 and value fourteen.
+Inserting key 11 and value eleven.
+Inserting key 3 and value three.
+Inserting key 15 and value fifteen.
+Inserting key 16 and value sixteen.
+Inserting key 9 and value nine.
+Inserting key 12 and value twelve.
+Inserting key 4 and value four.
+Inserting key 8 and value eight.
+Inserting key 6 and value six.
+Inserting key 2 and value two.
+Inserting key 1 and value one.
+Inserting key 19 and value nineteen.
+Inserting key 17 and value seventeen.
+Inserting key 7 and value seven.
+Inserting key 20 and value twenty.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+]0;matt@matt-SB2-Ubuntu: ~/Code/Classes/CPSC331/Assignments/Assignment_2[01;32mmatt@matt-SB2-Ubuntu[00m:[01;34m~/Code/Classes/CPSC331/Assignments/Assignment_2[00m$ java cpsc331.assignment2.AVLTest3[K4
+
+Initializing a new AVLDictionary with integers as keys and strings  as values.
+
+Inserting key 15 and value fifteen.
+Inserting key 8 and value eight.
+Inserting key 20 and value twenty.
+Inserting key 5 and value five.
+Inserting key 12 and value twelve.
+Inserting key 18 and value eighteen.
+Inserting key 22 and value twenty-two.
+Inserting key 3 and value three.
+Inserting key 7 and value seven.
+Inserting key 10 and value ten.
+Inserting key 14 and value fourteen.
+Inserting key 17 and value seventeen.
+Inserting key 19 and value nineteen.
+Inserting key 21 and value twenty-one.
+Inserting key 2 and value two.
+Inserting key 4 and value four.
+Inserting key 6 and value six.
+Inserting key 9 and value nine.
+Inserting key 11 and value eleven.
+Inserting key 13 and value thirteen.
+Inserting key 16 and value sixteen.
+Inserting key 1 and value one.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+Removing the node with key 19.
+remove correctly reported that the associated value was nineteen.
+
+Checking whether result is an AVL tree.
+This is an AVL tree.
+
+]0;matt@matt-SB2-Ubuntu: ~/Code/Classes/CPSC331/Assignments/Assignment_2[01;32mmatt@matt-SB2-Ubuntu[00m:[01;34m~/Code/Classes/CPSC331/Assignments/Assignment_2[00m$ java cpsc331.assignment2.AVLTest4[K5
+
+Constructing new AVLDictionary
+
+Checking whether a value is defined for 5
+The defined method correctly reported that no such value is defined.
+
+Defining a value for 5.
+get correctly reported that the value for 5 is "cinq".
+
+Defining a value for 3.
+get correctly reported that the value for 3 is "troix".
+
+Defining a new value for 3.
+get correctly reported that the value for 3 is "trois".
+
+Defining a value for 7.
+get correctly reported that the value for 7 is "sept".
+
+Checking whether value is defined for 4.
+defined correctly reported that no value for 4 is defined.
+
+Attempting to remove nonexistent value for 4.
+removed correctly threw a NoSuchElementException.
+
+Defining a value for 1.
+get correctly reported that the value for 1 is "un".
+
+Defining a value for 4.
+get correctly reported that the value for 4 is "quatre".
+
+Defining a value for 6.
+get correctly reported that the value for 6 is "six".
+
+Defining a value for 9.
+get correctly reported that the value for 9 is "neuf".
+
+Defining a value for 2.
+get correctly reported that the value for 2 is "deux".
+
+Defining a value for 8.
+get correctly reported that the value for 8 is "huit".
+
+Checking values in order.
+get correctly reported that the value for 1 is "un".
+get correctly reported that the value for 2 is "deux".
+get correctly reported that the value for 3 is "trois".
+get correctly reported that the value for 4 is "quatre".
+get correctly reported that the value for 5 is "cinq".
+get correctly reported that the value for 6 is "six".
+get correctly reported that the value for 7 is "sept".
+get correctly reported that the value for 8 is "huit".
+get correctly reported that the value for 9 is "neuf".
+
+Deleting values for 1, 5, 6 and 9.
+
+Checking values in order.
+get correctly threw a noSuchElementException when checking for 1.
+get correctly reported that the value for 2 is "deux".
+get correctly reported that the value for 3 is "trois".
+get correctly reported that the value for 4 is "quatre".
+get correctly threw a noSuchElementException when checking for 5.
+get correctly threw a noSuchElementException when checking for 6.
+get correctly reported that the value for 7 is "sept".
+get correctly reported that the value for 8 is "huit".
+get correctly threw a noSuchElementException when checking for 1.
+
+Reintroducing value for 5.
+get correctly reported that the value for 5 is "cinq".
+
+Checking values in order.
+get correctly threw a noSuchElementException when checking for 1.
+get correctly reported that the value for 2 is "deux".
+get correctly reported that the value for 3 is "trois".
+get correctly reported that the value for 4 is "quatre".
+get correctly reported that the value for 5 is "cinq".
+get correctly threw a noSuchElementException when checking for 6.
+get correctly reported that the value for 7 is "sept".
+get correctly reported that the value for 8 is "huit".
+get correctly threw a noSuchElementException when checking for 1.
+
+Deleting all keys and values except for 8.
+
+Checking values in order.
+get correctly threw a noSuchElementException when checking for 1.
+get correctly threw a noSuchElementException when checking for 2.
+get correctly threw a noSuchElementException when checking for 3.
+get correctly threw a noSuchElementException when checking for 4.
+get correctly threw a noSuchElementException when checking for 5.
+get correctly threw a noSuchElementException when checking for 6.
+get correctly threw a noSuchElementException when checking for 7.
+get correctly reported that the value for 8 is "huit".
+get correctly threw a noSuchElementException when checking for 9.
+
+Removing value for 8 and reintroducing value for 2.
+
+Checking values in order.
+get correctly threw a noSuchElementException when checking for 1.
+get correctly reported that the value for 2 is "deux".
+get correctly threw a noSuchElementException when checking for 3.
+get correctly threw a noSuchElementException when checking for 4.
+get correctly threw a noSuchElementException when checking for 5.
+get correctly threw a noSuchElementException when checking for 6.
+get correctly threw a noSuchElementException when checking for 7.
+get correctly threw a noSuchElementException when checking for 8.
+get correctly threw a noSuchElementException when checking for 9.
+
+Removing value for 2.
+
+Checking values in order.
+get correctly threw a noSuchElementException when checking for 1.
+get correctly threw a noSuchElementException when checking for 2.
+get correctly threw a noSuchElementException when checking for 3.
+get correctly threw a noSuchElementException when checking for 4.
+get correctly threw a noSuchElementException when checking for 5.
+get correctly threw a noSuchElementException when checking for 6.
+get correctly threw a noSuchElementException when checking for 7.
+get correctly threw a noSuchElementException when checking for 8.
+get correctly threw a noSuchElementException when checking for 9.
+
+]0;matt@matt-SB2-Ubuntu: ~/Code/Classes/CPSC331/Assignments/Assignment_2[01;32mmatt@matt-SB2-Ubuntu[00m:[01;34m~/Code/Classes/CPSC331/Assignments/Assignment_2[00m$ exit
+
+Script done on 2018-11-12 15:03:35-0700
