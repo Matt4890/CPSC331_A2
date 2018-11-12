@@ -375,12 +375,26 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		// 		where d = depth of y.
 		while (y != null) {
 
+			int oldHeight = y.height;
+
 			// Assertion: A node was inserted, and thus there may be a problem node with a bad balance factor.
 			y.updateHeight();
 			if (y.balanceFactor() == 2 || y.balanceFactor() == -2) {
 
 				// Assertion: Node y has a bad balance factor.
 				balanceNode(y);
+
+				System.out.println("===========================================================================********");
+				// Assertion: No other problem nodes are in this tree.
+				break;
+
+			} else if (oldHeight != 0 && oldHeight == y.height){
+
+				System.out.println("===================================================================================");
+				// Assertion: The height of y has not chaaged, therefore
+				// no nodes above y have had their balance factors changed.
+				// Therefore there are no other problem nodes in this tree.
+				break;
 
 			}
 
@@ -566,6 +580,7 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 		while (p != null) {
 
 			// Assertion: There may be a problem node with a bad balance factor.
+			int oldHeight = p.height;
 			boolean equalCase = false;
 			p.updateHeight();
 			if (p.balanceFactor() == 2 || p.balanceFactor() == -2) {
@@ -574,8 +589,10 @@ public class AVLDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
 				equalCase = balanceNode(p);
 
 			}
+
 			if (equalCase) {
 
+				System.out.println("===============================================================********====********");
 				// Assertion: A *-equal case was balanced.
 				// Thus, we know that all nodes above p have an acceptable balance
 				// factor, and we dont need to search anymore.
